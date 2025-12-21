@@ -1,57 +1,72 @@
-# opensource-casino-v9
-Open source slots casino script (formely-Goldsvet) v9
-This is a laravel casino app, you need to download game packs for it.
+<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-You can also join our discord at https://discord.gg/HscTu67FSu and access downloads for games. Games work for both versions. (up to v9 so far).
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-/////////////////////////////////////////
-https://promex.me/shop/discordoffers/goldsvet-version-9-complete-php-script-laravel-9-php8/
-This is a partner service that offer pre-setup environment for hosting the script you can edit after initial setup. 
-/////////////////////////////////////////
+## About Laravel
 
-Do not forget to download https://drive.google.com/file/d/1bbRD74BL-f2MOAG4LrBCKlwsYK6qteMj/view 
-And add it to your : 
-storage/app/GeoIP2-City_20201006/ folder The setup assumes regular Laravel setup, with casino folder setup outside your www ( or change index )
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-THIS DOCUMENT SHOWS A SETUP SAMPLE ON A CPANEL SERVER, AND CAN BE REPLICATED ON OTHER SETUPS.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Setup your server with Apache, mysql, php 7.1-4, composer, nodejs16 & PM2 Force Domain SSL 
-Generate SSL CRT KEY & BUNDLE COPY THE CONTENTS OF YOUR CRT/KEY/BUNDLE TO FILES IN FOLDER CASINO/PTWEBSOCKET/SSL/ Create a new email & password
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-Create a new database Grant all access Import the SQL file located in folder CASINO/DATABASE/MIGRATIONS/betshopme_8.sql via PHPMYADMIN 
-to the database extra DB file not required (experimentalarcadegames.sql) unless you are experimenting with arcade games Zip File Uploads Casino.zip and public_html.zip should be unzipped in the following manner 
-public_html → this is your public directory casino → this goes outside your public folder for security so it becomes YOUR ROOT FOLDER /casino /public_html If you decide to move your casino folder INSIDE public_html 
-You have to modify two things 1: open index.php inside public_html and replace all folder paths ( ./../casino portion to ./casino/ ) 
-2: MUST configure .htaccess to deny .env files or all dot files ( google dot files protection via htaccess) 
+## Learning Laravel
 
-//**** extra tip since it contains demo user accounts Generate new password hash for existing users and run this in phpmyadmin (replace hash) https://bcrypt-generator.com/ If you need to has a new word. Example : (run this in phpmyadmin) UPDATE w_users SET password = '$2a$12$s1RpwEx/oTL3vYQGZjC33eBHECRJb7gkjmAk9Tmyefub7gQ4nh8XS';
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-This has makes all users have password : Test123 ********/// 
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-SSL SPECIFIC INSTRUCTIONS Delete self signed if any Generate or install the Lets Encrypt one if you have it Save text file via notepad or direct 
-Certificate: (CRT) ==> crt.crt Private Key (KEY) --> key.key Certificate Authority Bundle: (CABUNDLE) ==> intermediate.pem 
-Go in Folder casino/PTWebSocket/ssl and replace those 3 files --------------- FILE EDITS casino/.env EDIT LINES for domain, database and user/password, email and password EDIT casino/config/app.php (URL line 65 ) 
+## Laravel Sponsors
 
-EDIT casino/public/ ALL SOCKET FILES CHANGE YOUR DOMAIN NAMEIF YOU NEED TO CHANGE PORTS YOU CAN DO SO HERE AS WELLGames downloads Find download packages at discord https://discord.gg/HscTu67FSu Currently ~ 1000 games – 40 GB total. 
-Go to /home/USERNAME/public_html/ Password is : password Download the core + 3 game packs Unpack 
-(Tip : upload one zip, unpack with:: 7z x -ppassword file.zip ) --- 
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-PM2 COMMANDS FROM INSIDE https://pm2.keymetrics.io/docs/usage/quick-start/ 
-PTWEBSOCKET COMMANDS + 
-pm2 start Arcade.js --watch pm2 start Server.js --watch pm2 start Slots.js --watch 
-OR if you tested before and not expecting errors, all in one command : 
-pm2 start Arcade.js --watch && pm2 start Server.js --watch && pm2 start Slots.js –watch 
-SAMPLE USEFUL COMMANDS 
-pm2 stop all pm2 delete all pm2 flush pm2 logs 
-all commands on https://pm2.keymetrics.io/docs/usage/quick-start/ 
-extra tool can be used called wscat (install via ssh)wscat -c "wss://domain:PORT/slots' <--- as an example to make sure you get connected msgOpen ports in Firewall 22154 22188 22197 (or whatever you set your Socket file ports to) 
-Run site :: it should work now if everything was setup correctly. 
-Visual Edits : To change Sliders Text, and footer notes / terms and conditions. Edit : \casino\resources\lang\en\app.php Lines 1255 ++ include text in frontpage Sliders are in root folder /woocasino/ for easy access and change (slider1,2,3,4,5 and for mobile mslider1,2,3,4,5)
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[British Software Development](https://www.britishsoftware.co)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- [UserInsights](https://userinsights.com)
+- [Fragrantica](https://www.fragrantica.com)
+- [SOFTonSOFA](https://softonsofa.com/)
+- [User10](https://user10.com)
+- [Soumettre.fr](https://soumettre.fr/)
+- [CodeBrisk](https://codebrisk.com)
+- [1Forge](https://1forge.com)
+- [TECPRESSO](https://tecpresso.co.jp/)
+- [Runtime Converter](http://runtimeconverter.com/)
+- [WebL'Agence](https://weblagence.com/)
+- [Invoice Ninja](https://www.invoiceninja.com)
+- [iMi digital](https://www.imi-digital.de/)
+- [Earthlink](https://www.earthlink.ro/)
+- [Steadfast Collective](https://steadfastcollective.com/)
+- [We Are The Robots Inc.](https://watr.mx/)
+- [Understand.io](https://www.understand.io/)
+- [Abdel Elrafa](https://abdelelrafa.com)
+- [Hyper Host](https://hyper.host)
 
-Minor troubleshooting if your composer/artisan not ran correctly
+## Contributing
 
-php artisan cache:clear && php artisan view:clear && php artisan config:clear && php artisan event:clear && php artisan route:clear
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-URL TROUBLESHOOTING 404 ERROR MAKE SURE YOUR HTACCESS WAS GENERATED, CORRECTLY AND DID HAVE
+## Security Vulnerabilities
 
-Options -MultiViews -Indexes RewriteEngine On # Handle Authorization Header RewriteCond %{HTTP:Authorization} . RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}] # Redirect Trailing Slashes If Not A Folder... RewriteCond %{REQUEST_FILENAME} !-d RewriteCond %{REQUEST_URI} (.+)/$ RewriteRule ^ %1 [L,R=301] # Handle Front Controller... RewriteCond %{REQUEST_FILENAME} !-d RewriteCond %{REQUEST_FILENAME} !-f RewriteRule ^ index.php [L] Header set Access-Control-Allow-Origin "*"
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
